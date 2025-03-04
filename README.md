@@ -9,15 +9,15 @@ After setting up sqlalchemy to reflect the existing database, the most recent da
 ## API
 
 After the initial analysis, I moved on to creating the API. The API has the following routes:
-- /api/v1.0/precipitation
+- `/api/v1.0/precipitation`
     - 12 Months of precipitaton data
-- "/api/v1.0/stations
+- `/api/v1.0/stations`
     - Info on all stations
-- "/api/v1.0/tobs
+- `/api/v1.0/tobs`
     - Temperature info
-- "/api/v1.0/\<start>
-    - (please use yyyy-mm-dd format)  
-- "/api/v1.0/\<start>/\<end>
-    - (please use yyyy-mm-dd format)
+- `/api/v1.0/\<start>`
+    - gathers all data after start date (please use yyyy-mm-dd format)  
+- `/api/v1.0/\<start>/\<end>`
+    - gathers all data between start and end date, inclusive (please use yyyy-mm-dd format)
  
 Each route returns a json object with data explained above. 
