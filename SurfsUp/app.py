@@ -45,9 +45,10 @@ def home():
 def rain():
     outputdict = {}
     print('landing on precipitaion page...')
+    sel = [measurement.date, measurement.prcp]
 
     firstdate = dt.date(2017, 8, 23) - dt.timedelta(days=365)
-    lastyear = s.query(measurement.date, measurement.prcp).filter(measurement.date >= firstdate).all()
+    lastyear = s.query(*sel).filter(measurement.date >= firstdate).all()
     for row in lastyear:
         outputdict[row.date] = row.prcp
     return jsonify(outputdict)
@@ -67,9 +68,9 @@ def stations():
 def tobs():
     outputdict = {}
     print('landing on tobs page...')
-    
-    output = s.query(measurement.date, measurement.tobs).\
-        filter(measurement.station == 'USC00519281').all() # USC00519281 is most active station
+    sel = [measurement.date, measurement.tobs]
+
+    output = s.query(*sel).filter(measurement.station == 'USC00519281').all() # USC00519281 is most active station
     for row in output:
         outputdict[row.date] = row.tobs
     return jsonify(outputdict)
